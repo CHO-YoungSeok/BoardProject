@@ -4,8 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>main</title>
+    <style>
+        nav {
+            margin-bottom: 1.5em;
+        }
+        nav p {
+            margin: 0%;
+        }
+        body {
+            margin-left: auto;
+            margin-right: auto;
+            height: 120vh; 
+            width: 95vw;
+        }
+        section {
+            height: 70%;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
+    <h1>BOARD PROJECT MAIN PAGE</h1>
+    <hr>
+    <nav>
+        <p>- <a href="/center" target="sector">home</a> | <a href="http://" target="sector">list</a> </p>
+    </nav>
     
+    <section>
+        <iframe src="/center" frameborder="1" name="sector" width="85%", height="100%"></iframe>
+    </section>
+
+    <footer>
+        <%- include('./footer.ejs') %>
+    </footer>
 </body>
 </html>
