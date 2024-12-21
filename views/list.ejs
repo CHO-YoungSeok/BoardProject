@@ -4,10 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>list</title>
+    <style>
+        h3 {
+            margin-bottom: 1.5em;
+        }
+    </style>
 </head>
 <body>
     <h3>list</h3>
-    <br>
+    <table>
+        <thead>
+            <tr><th>no</th><th>title</th><th>time</th></tr>
+        </thead>
+        <tbody>
+            <% data.forEach((el, index) => { %>
+                <td style="display: none;"><% el.no %></td>
+                <td><% index %></td>
+                <td><% el.title %></td>
+                <td><% el.time %></td>
+            <% }) %>
+        </tbody>
+    </table>
+    
+    
     
 </body>
 </html>
