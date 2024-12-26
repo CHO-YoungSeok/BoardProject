@@ -44,14 +44,12 @@ app.get('/insert', (req, res)=> {
 })
 app.post('/insert', (req, res) => {
     const {title, content} = req.body;
-    const now = new Date();
-    const month = now.getMonth() + 1;
-    const date = now.getDate();
-    const year = now.getFullYear();
+    const now  = new Date();
     const hour = now.getHours() + 1;
     const minutes = now.getMinutes();
-    const time = hour + "-" + minutes;
-    let sql = "INSERT INTO contents (title, time, content) VALUES (" + title +", " + time + ", " + content + "); " ;
+    if(minutes.length == 1) minutes = '0' + minutes;
+    const time = hour + minutes;
+    let sql= `INSERT INTO contents VALUES(null, '` + title + `', ` + `NOW()` + `, ` + ` 'content' );`;
     conn.query(sql, (err, result) => {
         if(err) console.log(err);
         else {
