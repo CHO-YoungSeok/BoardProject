@@ -1,8 +1,8 @@
 const exrpess = require('express');
 const app = exrpess();
 const port = 8000;
-const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(exrpess.json());
+app.use(exrpess.urlencoded({extended:true}));
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 
@@ -35,11 +35,32 @@ app.get('/footer', (req, res) => {
 app.get('/list', (req, res) => {
     let sql = "SELECT * FROM contents";
     conn.query(sql, (err, result) => {
-        if(err) {
-            console.log(err);
-        }
+        if(err) console.log(err);
+        else res.render('list', {data:result});
+    })
+})
+app.get('/insert', (req, res)=> {
+    res.render('insert');
+})
+app.post('/insert', (req, res) => {
+    const {title, content} = req.body;
+    const now = new Date();
+    const month = now.getMonth() + 1;
+    const date = now.getDate();
+    const year = now.getFullYear();
+    const hour = now.getHours() + 1;
+    const minutes = now.getMinutes();
+    const time = hour + "-" + minutes;
+    let sql = "INSERT INTO contents (title, time, content) VALUES (" + title +", " + time + ", " + content + "); " ;
+    conn.query(sql, (err, result) => {
+        if(err) console.log(err);
         else {
-            res.render("list", { data:result });
+            let msg= `<script type="text/javascript">`
+            msg+= `alert("저장되었습니다");`;
+            msg+= `window.location.href='/list';`;
+            msg+= `</script>`
+            res.send(msg);
         }
     })
+
 })

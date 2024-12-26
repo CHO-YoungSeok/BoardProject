@@ -19,6 +19,12 @@
 - nodejs 숙련도 키우기
 - gitHub, gitHub action, aws등 프로젝트 툴 배우기
 
+### 보완할 점 2024.12.26 작성
+- content 입력받을 시 최대 글자 수 제한 기능
+- list 제목에 하이퍼링크 추가 -> content확인인
+- 작성 시점을 기준으로 time 자동 추가
+
+
 
 
 ## 추가 예정
