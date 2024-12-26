@@ -24,7 +24,7 @@
         <tbody>
             <% data.forEach((el, index) => { %>
                 <tr>
-                    <td style="display: none;"><% el.no %></td>
+                    <td style="display: none;"><% el.no || 'N/A' %></td>
                     <td><% index %></td>
                     <td><% el.title %></td>
                     <td><% el.time %></td>
@@ -32,8 +32,6 @@
             <% }) %>
         </tbody>
     </table>
-    
-    
     
 </body>
 </html>
